@@ -18,7 +18,7 @@ OBJS = $(SRCS:.c=.o)
 ifeq ($(HOSTTYPE),)
     HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
-NAME = libft_malloc_$HOSTTYPE.so
+NAME = libft_malloc_$(HOSTTYPE).so
 
 all: $(NAME)
 
@@ -30,6 +30,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f libft_malloc.so
 
 re: fclean all
 

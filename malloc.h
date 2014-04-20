@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/16 23:38:04 by sbres             #+#    #+#             */
-/*   Updated: 2014/04/20 04:14:07 by sbres            ###   ########.fr       */
+/*   Updated: 2014/04/20 15:58:50 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define TINY_MAX 63
 # define MEDIUM_MAX 255
-# define HEADER_SIZE 17
 # include <stdlib.h>
 
 typedef struct		s_data
@@ -44,12 +43,13 @@ void	*ft_find_memory(void *page, int page_size, int size);
 //void	set_header(void *start_point, int is_free, int size);
 
 void		new_block(int size, void *ptr, int state, t_data **list);
-void		*malloc(size_t size);
+void		*ftmalloc(size_t size);
 void		*realloc(void *ptr, size_t size);
-void		free(void *ptr);
+void		ftfree(void *ptr);
 void		show_alloc_mem();
 void		ft_putnbr(int n);
 void		ft_putchar(char n);
+void		show_alloc_mem();
 t_pages		pages;
 
 #endif

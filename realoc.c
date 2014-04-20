@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/20 01:07:35 by sbres             #+#    #+#             */
-/*   Updated: 2014/04/20 04:15:54 by sbres            ###   ########.fr       */
+/*   Updated: 2014/04/20 19:37:10 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void				*realloc(void *ptr, size_t size)
 		return (tmp->ptr);
 	}
 	else
+	{
 		return (ft_brutus(ptr, tmp->size, size));
+	}
 }

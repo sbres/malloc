@@ -6,15 +6,14 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/19 09:54:14 by sbres             #+#    #+#             */
-/*   Updated: 2014/04/20 06:09:24 by sbres            ###   ########.fr       */
+/*   Updated: 2014/04/20 19:32:28 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
-#include <stdio.h> //printf
-#include <unistd.h> //write
+#include <unistd.h>
 
-static void		print_memory(int start, int end, int size)
+static void		ft_print_memory(int start, int end, int size)
 {
 	ft_putnbr(start);
 	ft_putchar(' ');
@@ -26,7 +25,7 @@ static void		print_memory(int start, int end, int size)
 	write(1, " bytes\n", 7);
 }
 
-static void		print_tiny()
+static void		print_tiny(void)
 {
 	t_data	*tmp;
 	int		find;
@@ -41,12 +40,13 @@ static void		print_tiny()
 			find = 1;
 		}
 		if (tmp->is_free == 0)
-			print_memory((intptr_t)tmp->ptr, (intptr_t)tmp->ptr + tmp->size - 1, tmp->size);
+			ft_print_memory((intptr_t)tmp->ptr,
+				(intptr_t)tmp->ptr + tmp->size - 1, tmp->size);
 		tmp = tmp->next;
 	}
 }
 
-static void		print_medium()
+static void		print_medium(void)
 {
 	t_data	*tmp;
 	int		find;
@@ -57,17 +57,17 @@ static void		print_medium()
 	{
 		if (find == 0 && tmp->is_free == 0)
 		{
-
 			write(1, "MEDIUM:\n", 8);
 			find = 1;
 		}
 		if (tmp->is_free == 0)
-			print_memory((intptr_t)tmp->ptr, (intptr_t)tmp->ptr + tmp->size - 1, tmp->size);
+			ft_print_memory((intptr_t)tmp->ptr,
+				(intptr_t)tmp->ptr + tmp->size, tmp->size);
 		tmp = tmp->next;
 	}
 }
 
-static void		print_big()
+static void		print_big(void)
 {
 	t_data	*tmp;
 	int		find;
@@ -78,16 +78,17 @@ static void		print_big()
 	{
 		if (find == 0 && tmp->is_free == 0)
 		{
-			write(1,"BIG:\n", 5);
+			write(1, "BIG:\n", 5);
 			find = 1;
 		}
 		if (tmp->is_free == 0)
-			print_memory((intptr_t)tmp->ptr, (intptr_t)tmp->ptr + tmp->size - 1, tmp->size);
+			ft_print_memory((intptr_t)tmp->ptr,
+				(intptr_t)tmp->ptr + tmp->size - 1, tmp->size);
 		tmp = tmp->next;
 	}
 }
 
-void			show_alloc_mem()
+void			show_alloc_mem(void)
 {
 	print_tiny();
 	print_medium();
